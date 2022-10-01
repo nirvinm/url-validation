@@ -1,6 +1,7 @@
 import { debounce } from "./lib/debounce";
 import { validateURLFormat } from "./lib/url";
 import { getURLInfo } from "./services/url-info-service";
+import './index.css';
 
 const bindURLValidation = () => {
     const validationLabel = document.getElementById('url-validation-msg');
