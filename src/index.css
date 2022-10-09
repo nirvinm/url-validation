@@ -7,3 +7,11 @@ body {
     width: 500px;
     font-size: larger;
 }
+
+#log-container {
+    margin-top: 80px;
+}
+
+#log {
+    border: none;
+}

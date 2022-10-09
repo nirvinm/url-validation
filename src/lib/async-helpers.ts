@@ -1,3 +1,5 @@
+import { log } from "../log";
+
 // simulate sleep for given milliseconds.
 export async function sleep(timeInMilliseconds: number) {
     return new Promise(resolve => setTimeout(resolve, timeInMilliseconds));
@@ -15,12 +17,19 @@ export function withRetry<TResult>(
     return (...args: any) => {
         const retry = (retries: number): Promise<TResult> => {
             if (abortSignal.aborted) {
+                log(`Aborting all retries for ${args}`);
                 return Promise.reject(new Error('AbortError'));
             }
-            return fn(...args).catch(err => {
+            log(`Attempt ${retries} - Initiating getURLInfo API for input ${args}`);
+            return fn(...args).then(resp => {
+                log(`Attempt ${retries} - Response received for input ${args}`);
+                return resp;
+            }).catch(err => {
                 if (retries < retryAttempts) {
+                    log(`Attempt ${retries} - Failed. Received ${err}`);
                     return retry(retries + 1);
                 } else {
+                    log(`Retries exhausted. Will not attempt anymore for input ${args}`);
                     return Promise.reject(err);
                 }
             });
