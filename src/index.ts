@@ -20,11 +20,15 @@ const bindURLValidation = () => {
             const getURLInfoResponse = await getURLInfoWithRetry(urlInput.value);
             // user could have changed the url, but the fetch might be delayed due to async nature of the call.
             // so let's check if the current value is still same as what was in the input box when this fetch was made.
-            if (url == urlInput.value)
-                validationLabel.innerHTML = `API call success. Server response is <pre>${JSON.stringify(getURLInfoResponse)}</pre>`;
+            if (url == urlInput.value) {
+                validationLabel.innerHTML =
+                    getURLInfoResponse.data != null
+                        ? `API call success. Server response is <pre>${JSON.stringify(getURLInfoResponse)}</pre>`
+                        : `<strong><small>${url}</small></strong> does not exist. Server response is <pre>${JSON.stringify(getURLInfoResponse)}</pre>`;
+            }
         } catch (err) {
             if (err.message !== 'AbortError') {
-                validationLabel.innerHTML = `API call failed for <strong><small>${url}</small><strong> <pre>${err}</pre>`;
+                validationLabel.innerHTML = `Could not connect to connect to server to get information about <strong><small>${url}</small><strong> <pre>${err}</pre>`;
             }
         }
     }, API_FETCH_DEBOUNCE_INTERVAL);
