@@ -1,3 +1,4 @@
+import { config } from "../config";
 import { sleep } from "../lib/async-helpers";
 import { between, oneOf } from "../lib/random";
 
@@ -21,7 +22,7 @@ export type URLInfo = {
 export const getURLInfo = async (url: string): Promise<APIResponse<URLInfo>> => {
     // simulated network fetch
     // simulate network latency using sleep
-    const randomWaitTime = between(300, 2000); // pick random delay between 300 ms - 2 secs
+    const randomWaitTime = between(config.API_FETCH_MIN_TIME_MILLISECONDS, config.API_FETCH_MAX_TIME_MILLISECONDS); // pick random delay between 300 ms - 2 secs
     await sleep(randomWaitTime);
 
     if (oneOf(['success', 'error']) === 'success') {

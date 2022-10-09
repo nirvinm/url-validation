@@ -7,6 +7,17 @@
 </head>
 
 <body>
+    <div id="config-container">
+        <label>Max Retires:</label>
+        <input id="retries" class="config" type="number" min="0" max="10" />
+
+        <label>Min fetch time (ms):</label>
+        <input id="minFetchTime" class="config" type="number" min="0" step="1000" />
+
+        <label>Max fetch time (ms):</label>
+        <input id="maxFetchTime" class="config" type="number" min="0" step="1000"/>
+    </div>
+
     <div>
         <label for="url" id="url-label">Enter an URL:</label>
     </div>
