@@ -1,4 +1,7 @@
-const logText = <HTMLInputElement>document.getElementById('log');
+let logText: HTMLInputElement = null;
+if (typeof (document) != 'undefined') {
+    logText = <HTMLInputElement>document.getElementById('log');
+}
 
 export function log(s: string) {
     const msg = `${new Date().toLocaleString()}  ${s}\n`;
