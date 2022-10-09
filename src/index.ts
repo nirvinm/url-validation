@@ -1,6 +1,6 @@
 import { debounce } from "./lib/debounce";
 import { validateURLFormat } from "./lib/url";
-import { withRetry } from "./lib/async-helpers";
+import { withRetry } from "./lib/async-helper";
 import { getURLInfo } from "./services/url-info-service";
 import { config } from "./config";
 import './index.css';

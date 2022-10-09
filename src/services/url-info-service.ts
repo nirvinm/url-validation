@@ -1,5 +1,5 @@
 import { config } from "../config";
-import { sleep } from "../lib/async-helpers";
+import { sleep } from "../lib/async-helper";
 import { between, oneOf } from "../lib/random";
 
 export type APIError = {

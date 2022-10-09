@@ -1,4 +1,4 @@
-import { withRetry } from "./async-helpers";
+import { withRetry } from "./async-helper";
 
 describe('async-helper', () => {
     describe('withRetry', () => {
