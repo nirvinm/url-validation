@@ -1,6 +1,8 @@
 body {
     font-size: x-large;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 #url {
     margin: 8px 0;
     padding: 8px;
@@ -14,4 +16,5 @@ body {
 
 #log {
     border: none;
+    font-size: x-large;
 }
